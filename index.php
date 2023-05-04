@@ -17,19 +17,6 @@ require_once './Models/DogProduct.php';
 
 require_once './db.php';
 
-// // istanzio una nuova entità della classe DogProduct
-// $youngDogCroquettes = new DogProduct("Monge", "https://www.naturepetshop.it/wp-content/uploads/monge-adult-medium.jpg", 17, "food", "https://cdn-icons-png.flaticon.com/512/91/91544.png", "big", "> 5");
-
-// // istanzio una nuova entità della classe CatProduct
-// $catSkein = new CatProduct("Skein", "https://ae01.alicdn.com/kf/S1c72f7484fcb4feda6963005aa2dc5a7Z/Giochi-gomitoli-colorati-con-sonaglio-per-gatti-2-pezzi.jpg", 10, "toy", "https://logowik.com/content/uploads/images/cat8600.jpg", "medium", "< 3");
-
-
-// $product[] = $youngDogCroquettes;
-// $product[] = $catSkein;
-
-// // stampo a schermo l'array contenente le due istanze
-// var_dump($product);
-
 ?>
 
 <!DOCTYPE html>
@@ -41,17 +28,49 @@ require_once './db.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="stylesheet" href="css/style.css">
+
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
 </head>
 
 <body>
-    <div class="container">
+
+    <?php
+    include './Views/partials/header.php';
+    ?>
+
+    <div class="container d-flex gap-2">
+
+        <?php
+        foreach ($product as $singleProduct) {
+        ?>
+
+            <div></div>
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top card-image" src="<?= $singleProduct->image ?>" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><?= $singleProduct->name ?></h5>
+                </div>
+                <img class="icon" src="<?= $singleProduct->icon ?>" alt="icon">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong> Price: </strong><?= $singleProduct->price ?> $</li>
+                    <li class="list-group-item"><strong>Product type: </strong><?= $singleProduct->type ?></li>
+                    <li class="list-group-item"><strong>Animal size: </strong><?= $singleProduct->size ?></li>
+                    <li class="list-group-item"><strong>Animal age: </strong><?= $singleProduct->age ?> years old</li>
+                </ul>
 
 
-
+            </div>
+        <?php
+        }
+        ?>
     </div>
+
+    <?php
+    include './Views/partials/footer.php';
+    ?>
 
     <!-- bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
