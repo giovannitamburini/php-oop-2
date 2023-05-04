@@ -41,7 +41,7 @@ require_once './db.php';
     include './Views/partials/header.php';
     ?>
 
-    <div class="container d-flex gap-2">
+    <div class="m-2 d-flex wrap justify-content-center gap-2 row">
 
         <?php
         // ciclo per ogni elemento contenuto nell'array $product

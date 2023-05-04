@@ -8,7 +8,7 @@ class DogProduct extends Product
     public $age;
 
     // definisco il costruttore per CatProduct
-    function __construct(string $name, string $image, int $price, string $type, string $icon, string $size, int $age)
+    function __construct(string $name, string $image, int $price, string $type, string $icon, string $size, string $age)
     {
         // passo il valore dei paramentri del costruttore genitore cioè di Product
         parent::__construct($name, $image, $price, $type);
