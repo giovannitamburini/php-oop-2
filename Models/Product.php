@@ -8,13 +8,19 @@ class Product
     public $image;
     public $price;
     public $type;
+    public $size;
+    public $age;
+    public $icon;
 
     // definisco il costruttore per rendere obbligatoria l'indicazione dei dati
-    function __construct(string $name, string $image, int $price, string $type)
+    function __construct(string $name, string $image, int $price, string $type, string $size, string $age, string $icon)
     {
         $this->name = $name;
         $this->image = $image;
         $this->price = $price;
         $this->type = $type;
+        $this->icon = $icon;
+        $this->size = $size;
+        $this->age = $age;
     }
 }
