@@ -44,20 +44,29 @@ require_once './db.php';
     <div class="container d-flex gap-2">
 
         <?php
+        // ciclo per ogni elemento contenuto nell'array $product
         foreach ($product as $singleProduct) {
         ?>
 
-            <div></div>
+            <!-- card -->
             <div class="card" style="width: 18rem;">
+                <!-- img card = proprità "image" -->
                 <img class="card-img-top card-image" src="<?= $singleProduct->image ?>" alt="Card image cap">
+                <!-- nome del prodotto = proprietà "name" -->
                 <div class="card-body">
                     <h5 class="card-title"><?= $singleProduct->name ?></h5>
                 </div>
+                <!-- logo = proprietà logo -->
                 <img class="icon" src="<?= $singleProduct->icon ?>" alt="icon">
+                <!-- lista con le altre informazioni del prodotto -->
                 <ul class="list-group list-group-flush">
+                    <!-- prezzo = proprietà "price" -->
                     <li class="list-group-item"><strong> Price: </strong><?= $singleProduct->price ?> $</li>
+                    <!-- tipo di prodotto = proprietà "type" -->
                     <li class="list-group-item"><strong>Product type: </strong><?= $singleProduct->type ?></li>
+                    <!-- taglia dell'animale a cui si riferisce il prodotto = proprietà "size" -->
                     <li class="list-group-item"><strong>Animal size: </strong><?= $singleProduct->size ?></li>
+                    <!-- età dell'animale a cui si riferisce il prodotto = proprietà "age" -->
                     <li class="list-group-item"><strong>Animal age: </strong><?= $singleProduct->age ?> years old</li>
                 </ul>
 

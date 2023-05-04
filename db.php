@@ -6,9 +6,6 @@ $youngDogCroquettes = new DogProduct("Monge", "https://www.naturepetshop.it/wp-c
 $catSkein = new CatProduct("Skein", "https://ae01.alicdn.com/kf/S1c72f7484fcb4feda6963005aa2dc5a7Z/Giochi-gomitoli-colorati-con-sonaglio-per-gatti-2-pezzi.jpg", 10, "toy", "https://images.freeimages.com/clg/images/41/416878/cat-icons_f.jpg", "medium", 3);
 
 // inserisco all'interno di un array $product le istanze create
-$dogProduct[] = $youngDogCroquettes;
-$catProduct[] = $catSkein;
-
 $product[] = $youngDogCroquettes;
 $product[] = $catSkein;
 
