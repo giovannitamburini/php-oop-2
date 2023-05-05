@@ -14,7 +14,7 @@ require_once './Models/Product.php';
 require_once './Models/CatProduct.php';
 // importo la componente contenente la classe DogProduct, estensione della classe Product
 require_once './Models/DogProduct.php';
-
+// importo la componente contenente il database
 require_once './db.php';
 
 ?>
@@ -38,10 +38,14 @@ require_once './db.php';
 <body>
 
     <?php
+    // importo la componente header
     include './Views/partials/header.php';
     ?>
 
     <div class="m-2 d-flex wrap justify-content-center gap-2 row">
+
+        <!-- prendo il valore della variabile statica dalla componente contenente la classe Product -->
+        <h2><?= Product::$sectionProducts ?></h2>
 
         <?php
         // ciclo per ogni elemento contenuto nell'array $product
