@@ -1,29 +1,48 @@
 <?php
 
+// import della classe Category per la composizione
+require_once __DIR__ . "/Category.php";
+
 // definisco la classe Product
 class Product
 {
     // definisco le variabili di istanza
-    public $name;
-    public $image;
-    public $price;
-    public $type;
-    public $size;
+    protected $name;
+    protected $image;
+    protected $price;
+    protected $category;
     public $age;
-    public $icon;
 
     // definisco una variabile statica
     public static $sectionProducts = "Premium product";
 
     // definisco il costruttore per rendere obbligatoria l'indicazione dei dati
-    function __construct(string $name, string $image, int $price, string $type, string $size, string $age, string $icon)
+    function __construct(string $name, string $image, int $price, Category $category, string $age)
     {
         $this->name = $name;
         $this->image = $image;
         $this->price = $price;
-        $this->type = $type;
-        $this->icon = $icon;
-        $this->size = $size;
+        $this->category = $category;
         $this->age = $age;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

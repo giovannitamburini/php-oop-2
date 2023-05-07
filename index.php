@@ -9,13 +9,15 @@ Stampiamo delle card contenenti i dettagli dei prodotti, come immagine, titolo, 
 */
 
 // importo la componente contenente la classe Prooduct
-require_once './Models/Product.php';
-// importo la componente contenente la classe CatProduct, estensione della classe Product
-require_once './Models/CatProduct.php';
-// importo la componente contenente la classe DogProduct, estensione della classe Product
-require_once './Models/DogProduct.php';
+// require_once './Models/Product.php';
+// // importo la componente contenente la classe CatProduct, estensione della classe Product
+// require_once './Models/CatProduct.php';
+// // importo la componente contenente la classe DogProduct, estensione della classe Product
+// require_once './Models/DogProduct.php';
 // importo la componente contenente il database
 require_once './db.php';
+
+var_dump($products);
 
 ?>
 
@@ -49,30 +51,56 @@ require_once './db.php';
 
         <?php
         // ciclo per ogni elemento contenuto nell'array $product
-        foreach ($product as $singleProduct) {
+        foreach ($products as $singleProduct) {
         ?>
 
             <!-- card -->
             <div class="card" style="width: 18rem;">
                 <!-- img card = proprità "image" -->
-                <img class="card-img-top card-image" src="<?= $singleProduct->image ?>" alt="Card image cap">
+                <img class="card-img-top card-image" src="<?= $singleProduct->getImage() ?>" alt="Card image cap">
                 <!-- nome del prodotto = proprietà "name" -->
                 <div class="card-body">
-                    <h5 class="card-title"><?= $singleProduct->name ?></h5>
+                    <h5 class="card-title"><?= $singleProduct->getName() ?></h5>
                 </div>
                 <!-- logo = proprietà logo -->
-                <img class="icon" src="<?= $singleProduct->icon ?>" alt="icon">
+                <img class="icon" src="<?= $singleProduct->getCategory()->getCategoryIcon() ?>" alt="icon">
                 <!-- lista con le altre informazioni del prodotto -->
                 <ul class="list-group list-group-flush">
                     <!-- prezzo = proprietà "price" -->
-                    <li class="list-group-item"><strong> Price: </strong><?= $singleProduct->price ?> $</li>
-                    <!-- tipo di prodotto = proprietà "type" -->
-                    <li class="list-group-item"><strong>Product type: </strong><?= $singleProduct->type ?></li>
-                    <!-- taglia dell'animale a cui si riferisce il prodotto = proprietà "size" -->
-                    <li class="list-group-item"><strong>Animal size: </strong><?= $singleProduct->size ?></li>
+                    <li class="list-group-item"><strong> Price: </strong><?= $singleProduct->getPrice() ?> $</li>
                     <!-- età dell'animale a cui si riferisce il prodotto = proprietà "age" -->
-                    <li class="list-group-item"><strong>Animal age: </strong><?= $singleProduct->age ?> years old</li>
+                    <li class="list-group-item"><strong>Animal age: </strong><?= $singleProduct->age ?></li>
+                    <!-- descrizione del prodotto in base alla tipologia di classe interessata -->
+                    <li class="list-group-item">
+                        <?php
+
+                        switch (get_class($singleProduct)) {
+                            case 'Product':
+
+                                echo "<br>";
+
+                                break;
+
+                            case 'Food':
+
+                                echo "<strong>Ingredienti: </strong>" . $singleProduct->getIngredients();
+
+                                break;
+
+                            case 'House':
+                                echo "<strong>Taglia: </strong>" . $singleProduct->getSize();
+                                break;
+
+                            case 'Toy':
+                                echo "<strong>Materiale: </strong>" . $singleProduct->getMaterial();
+                                break;
+                        }
+
+                        ?>
+                    </li>
                 </ul>
+
+                <button type="button" class="btn btn-success mt-2 mb-2 align-self-center">Shop now</button>
 
 
             </div>
