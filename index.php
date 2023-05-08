@@ -17,7 +17,7 @@ Stampiamo delle card contenenti i dettagli dei prodotti, come immagine, titolo, 
 // importo la componente contenente il database
 require_once './db.php';
 
-var_dump($products);
+// var_dump($products);
 
 ?>
 
@@ -98,6 +98,34 @@ var_dump($products);
 
                         ?>
                     </li>
+                    <li class="list-group-item">
+                        <?php
+
+                        switch (get_class($singleProduct)) {
+                            case 'Product':
+
+                                echo "<br>";
+
+                                break;
+
+                            case 'Food':
+
+                                echo "<br>";
+
+                                break;
+
+                            case 'House':
+                                echo "<strong>Voto: </strong>" . $singleProduct->getRate() . "/5";
+                                break;
+
+                            case 'Toy':
+                                echo "<strong>Voto: </strong>" . $singleProduct->getRate() . "/5";
+                                break;
+                        }
+
+                        ?>
+                    </li>
+
                 </ul>
 
                 <button type="button" class="btn btn-success mt-2 mb-2 align-self-center">Shop now</button>
